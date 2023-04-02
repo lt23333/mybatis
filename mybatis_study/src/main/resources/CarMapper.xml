@@ -12,5 +12,16 @@
 <!--   <delete id=""></delete>-->
 <!--   <update id=""></update>-->
 <!--   <select id=""></select>-->
-
+    <insert id="insertCar1">
+        insert  into t_car(id,car_num,brand,guide_price,produce_time,car_type)
+        values (null,#{k1},#{k2},#{k3},#{k4},#{k5})
+    </insert>
+<!--    <insert id="insertCar*">-->
+<!--        insert  into t_car(id,car_num,brand,guide_price,produce_time,car_type)-->
+<!--        values (null,#{要写map集合的key},#{k2},#{k3},#{k4},#{k5})-->
+<!--    </insert>-->
+    <insert id="insertCar2">
+        insert  into t_car(id,car_num,brand,guide_price,produce_time,car_type)
+        values (null,#{carNum},#{brand},#{guidePrice},#{produceTime},#{catType})
+    </insert>
 </mapper>

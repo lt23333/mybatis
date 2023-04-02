@@ -115,3 +115,23 @@ SqlSessionFactoryBuilder-->SqlSeesionFactory-->SqlSession
   *在JDBC当中占位符是？，在mybatis当中是什么呢？
   在mybatis当中不能使用？占位符，必须使用#{}来替代JDBC当中的？
   #{}和JDBC当中的？是等值的
+  <insert id="insertCar1">
+          insert  into t_car(id,car_num,brand,guide_price,produce_time,car_type)
+          values (null,#{k1},#{k2},#{k3},#{k4},#{k5})
+  </insert>
+  k1,k2过于生草，见名知意，与数据表的字段名相同。
+  *java程序中使用POJO
+    <insert id="insertCar2">
+           insert  into t_car(id,car_num,brand,guide_price,produce_time,car_type)
+           values (null,#{carNum},#{brand},#{guidePrice},#{produceTime},#{catType})
+    </insert>
+    底层去找Car类中getXXX方法
+    #{carNum}-->#{xyz}
+    public String getxyz(){
+     return carNum;
+    }
+    也能运行通过.严格意义上来说：如果使用POJO对象传递值的话，#{}这个大括号到底写什么？
+    写的是get方法的方法名去掉get，然后将剩下的单词首字母小写，然后放进去
+    例如：getUsename（）--》usename
+
+  *如果#{}只有一个 那么占位符可以随便写，但是最好见名直意
