@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CarMapperTest {
@@ -69,5 +70,39 @@ public class CarMapperTest {
        sqlSession.close();
 
    }
+
+//   查一个
+//    selectOne()
+   @Test
+   public void TestselectByid(){
+       SqlSession sqlSession = SqlSessionUtil.openSession();
+       //mybatis底层执行了select语句之后，一定会返回一个结果集对象，ResultSet
+       //mybatis底层会将查询结果集封装成一个对象，因此需要在配置文件中配置：告诉mybatis将结果集封装成什么样一个对象
+       Car selectByid = (Car) sqlSession.selectOne("selectByid", 1);
+       System.out.println(selectByid);
+       sqlSession.close();
+   }
+
+
+//   查所有
+//    selectList()
+   @Test
+   public  void TestselectAll(){
+       SqlSession sqlSession = SqlSessionUtil.openSession();
+       //mybatis底层执行了select语句之后，一定会返回一个结果集对象，ResultSet
+       //mybatis底层会将查询结果集封装成一个对象，因此需要在配置文件中配置：告诉mybatis将结果集封装成什么样一个对象
+       List<Car> selectALL = sqlSession.selectList("selectALL");
+       System.out.println(selectALL);
+       sqlSession.close();
+   }
+    @Test
+    public  void TestselectAll1(){
+        SqlSession sqlSession = SqlSessionUtil.openSession();
+        //mybatis底层执行了select语句之后，一定会返回一个结果集对象，ResultSet
+        //mybatis底层会将查询结果集封装成一个对象，因此需要在配置文件中配置：告诉mybatis将结果集封装成什么样一个对象
+        List<Car> selectALL = sqlSession.selectList("fasfasd.selectALL");
+        System.out.println(selectALL);
+        sqlSession.close();
+    }
 }
 

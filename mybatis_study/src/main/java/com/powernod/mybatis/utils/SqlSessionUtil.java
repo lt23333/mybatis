@@ -19,6 +19,7 @@ public class SqlSessionUtil {
         try {
             SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
             sqlSessionFactory = sqlSessionFactoryBuilder.build(Resources.getResourceAsStream("mybatis-config.xml"));
+//            sqlSessionFactory = sqlSessionFactoryBuilder.build(Resources.getResourceAsStream("mybatis-config.xml"),"环境的id");
         } catch (Exception e) {
             e.printStackTrace();
         }

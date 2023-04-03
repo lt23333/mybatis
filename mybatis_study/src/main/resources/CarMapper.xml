@@ -24,4 +24,22 @@
         insert  into t_car(id,car_num,brand,guide_price,produce_time,car_type)
         values (null,#{carNum},#{brand},#{guidePrice},#{produceTime},#{catType})
     </insert>
+    
+<!--    <select id="selectByid" resultType="指定结果集要封装的java对象类型：告诉mybatis将结果集封装成什么的对象返回">-->
+<!--        select * from t_car where id=#{id};-->
+<!--    </select>-->
+<!--    resultType：类的全限定类名-->
+
+<!--    查一个-->
+    <select id="selectByid" resultType="com.powernode.mybatis.POJO.Car">
+        select * from t_car where id=#{id};
+    </select>
+
+<!--    查所有-->
+    <select id="selectALL" resultType="com.powernode.mybatis.POJO.Car">
+        select *
+        from
+        t_car
+
+    </select>
 </mapper>

@@ -43,6 +43,6 @@
     <mappers>
        <!-- 指定XxxxMapper.xml文件的路径 -->
        <!-- resource属性自动从类的根路径下开始查找资源  -->
-        <mapper resource="CarMapper.xml"/>
+        <mapper resource="AccountrMapper.xml"/>
     </mappers>
 </configuration>
