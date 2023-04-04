@@ -2,6 +2,35 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="account">
+<mapper namespace="com.powernode.bank.dao.AccountDao">
 
+
+<!--  专门定义一个结果映射，在这个结果映射当中指定数据库的字段名和JAVA类的属性名的对应关系-->
+<!--  type属性用来指定POJO类的类名 id属性用来指定resultType的唯一标识。这个id将来要在select标签中使用-->
+  <resultMap id="carTrsultMap" type="Account">
+<!--  如果数据库表中有主键，建议这里配置id标签，注意：这不是必须的，配置的话可以提高效率-->
+<!--    property后面填写POJO类的属性名-->
+    <id property="id" column="id"></id>
+<!--    column后面填写数据库表的字段名 如果成员变量和字段名一样 可以不配-->
+    <result property="" column=""></result>
+    <result property="" column=""></result>
+    <result property="" column=""></result>
+  </resultMap>
+
+
+  <select id="" resultMap="carTrsultMap">
+
+
+  </select>
+
+  <select id="seletByActno" resultType="Account">
+    select * from t_act where actno=#{actno}
+  </select>
+   
+    <update id="UpdateByActno">
+      update t_act set balance = #{balance} where actno=#[actno]
+    </update>
+
+
+    
 </mapper>

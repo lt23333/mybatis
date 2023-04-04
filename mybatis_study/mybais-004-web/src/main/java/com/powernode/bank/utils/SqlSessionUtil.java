@@ -23,8 +23,20 @@ public class SqlSessionUtil {
         }
 
     }
-
+    private  static  ThreadLocal<SqlSession> local = new ThreadLocal<>();
     public static SqlSession openSession(){
-        return sqlSessionFactory.openSession();
+        SqlSession sqlSession = local.get();
+        if(sqlSession==null){
+            sqlSession =sqlSessionFactory.openSession();
+            //将sql对象绑定到当前线程
+            local.set(sqlSession);
+        }
+        return sqlSession;
+    }
+    public static void close(SqlSession sqlSession){
+        if(sqlSession!=null){
+            sqlSession.close();
+            local.remove();
+        }
     }
 }

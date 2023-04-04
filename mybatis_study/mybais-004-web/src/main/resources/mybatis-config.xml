@@ -15,6 +15,15 @@
 <!--使用properties配置文件-->
     <properties resource="jdbc.properties"></properties>
 
+<!--    起别名-->
+    <typeAliases>
+<!--        type:指定给哪个类型起别名-->
+<!--        alias:指定别名-->
+<!--          <typeAlias type="com.powernode.bank.pojo.Account"  alias="Account"></typeAlias>-->
+        
+        <package name="com.powernode.bank.pojo"/>
+    </typeAliases>
+
 
 <!--    这是 MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为-->
 <!--    <settings>-->
@@ -44,5 +53,6 @@
        <!-- 指定XxxxMapper.xml文件的路径 -->
        <!-- resource属性自动从类的根路径下开始查找资源  -->
         <mapper resource="AccountrMapper.xml"/>
+
     </mappers>
 </configuration>
