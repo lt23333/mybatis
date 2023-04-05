@@ -17,6 +17,28 @@
     <result property="" column=""></result>
   </resultMap>
 
+    <select id="select" resultType="Account">
+     select * from t_act
+    <!--
+     1.if标签中的test是必要的
+     2.if标签中tset属性的值是fasle或者true
+     3.如果test是true，则if表情红的sql语句就会拼接，反之，则不会拼接，
+     4.test属性中可以使用的是：
+        当使用@Param注解，那么tst中要出现的是@Pararm注解指定的参数名，@Pararm（"brand"）-brand
+        当没有使用@Param注解，那么test中要出现的是，Pararm1，pararm2，agr0，agr1
+     5.再mybatis的动态SQL当中，不能使用&&，只能使用and
+     *如果后面条件都不成立，会出现语法错误，后面没条件了啊？？？加个1=1 或者2=2恒成立的条件
+     -->
+    <where>
+        <if test="brand!=null and brand!=''">
+            and  brand like "%"#{brand}"%"
+        </if>
+        <if test="">
+            and
+        </if>
+    </where>
+
+    </select>
 
   <select id="" resultMap="carTrsultMap">
 

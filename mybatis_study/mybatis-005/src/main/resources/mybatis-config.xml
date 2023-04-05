@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--    java.Utils.Properties类，是一个map集合，key和values都是String类型-->
+<!--    <properties>-->
+<!--        <property name="属性名" value="属性值"/>-->
+<!--        <property name="jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--        <property name="jdbc.url" value="jdbc:mysql://localhost:3306/powernode"/>-->
+<!--        <property name="jdbc.username" value="root"/>-->
+<!--        <property name="jdbc.passowrd" value="abc123"/>-->
+<!--    </properties>-->
+
+<!--使用properties配置文件-->
+    <properties resource="jdbc.properties"></properties>
+
+<!--    起别名-->
+    <typeAliases>
+<!--        type:指定给哪个类型起别名-->
+<!--        alias:指定别名-->
+<!--          <typeAlias type="com.powernode.bank.pojo.Account"  alias="Account"></typeAlias>-->
+        
+        <package name="com.powernode.bank.pojo"/>
+    </typeAliases>
+
+
+<!--    这是 MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为-->
+<!--    <settings>-->
+<!--        开启mybatis标准日志输出-->
+<!--        setting必须放在前面,这是configuration标签的规定-->
+<!--        <setting name="logImpl" value="SLF4J"/>-->
+<!--    </settings>-->
+
+
+<!--    default:mybatis默认使用的环境
+       当你使用mybatis创建SqlSessionFactory对象的时候，没有指定环境的话，默认使用该环境
+  -->
+    <environments default="development">
+<!--        其中的一个环境-->
+        <!-- 一个环境environment会对应一个SqlSessionFactory对象 -->
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.passowrd}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+       <!-- 指定XxxxMapper.xml文件的路径 -->
+       <!-- resource属性自动从类的根路径下开始查找资源  -->
+        <mapper resource="AccountrMapper.xml"/>
+
+    </mappers>
+</configuration>
